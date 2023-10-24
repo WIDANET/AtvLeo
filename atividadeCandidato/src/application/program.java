@@ -3,7 +3,7 @@ package application;
 import java.util.Locale;
 import java.util.Scanner;
 
-import entites.Candidato;
+import entities.Candidato;
 
 public class program {
 
