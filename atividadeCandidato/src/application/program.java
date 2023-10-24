@@ -22,6 +22,7 @@ public class program {
 		if (opc == 1) {
 			System.out.println();
 			System.out.println("Inicializando testador de programa...");
+			System.out.println();
 			
 			System.out.print("Digite o nome do candidato: ");
 			String nome = sc.nextLine();
@@ -30,6 +31,7 @@ public class program {
 			int cod = sc.nextInt();
 			Candidato candidato = new Candidato(nome, cod);
 			candidato.setVotes(1);
+			System.out.println();
 			
 			System.out.println("O candidato " + candidato.getName() + " (" + candidato.getCod() + ")" + " teve: " + candidato.getVotes() + " voto.");
 		}
@@ -43,7 +45,8 @@ public class program {
 			Candidato [] vect = new Candidato[qntdCand];
 			for(int i = 0; i < vect.length; i++) {
 				
-				System.out.println("Digite os dados do candidado " + i + 1 + ": ");
+				int count = i + 1;
+				System.out.println("Digite os dados do candidado " + count + ": ");
 				System.out.print("Nome: ");
 				String nome = sc.nextLine();
 				System.out.print("Número: ");
@@ -66,6 +69,9 @@ public class program {
 					}
 				}
 			}
+			
+			Candidato vencedor = null;
+			
 			System.out.println();
 			System.out.println("----- RESULTADO DAS ELEIÇÕES ----- ");
 			System.out.println();
@@ -74,7 +80,17 @@ public class program {
 						+ candidato.getName() + ", de número " 
 						+ candidato.getCod() + ", teve um total de: " 
 						+ candidato.getVotes() + " votos.");
+				
+				if (vencedor == null || candidato.getVotes() > vencedor.getVotes()) {
+					vencedor = candidato;
 				}
+			}
+			System.out.println();
+			System.out.println("O candidato vencedor é: " 
+			+ vencedor.getName() 
+			+ " " + vencedor.getCod() 
+			+ ", com um total de " + vencedor.getVotes() 
+			+ " votos!" );
 		}
 		sc.close();
 	}
